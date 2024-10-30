@@ -107,5 +107,45 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Hier Punkt vor Strich Rechnung getestet,
+    //aber anscheinend kann der Taschenrechner auch nur mit 2 Zahlen rechnen
+    @Test
+    @DisplayName("should consider dot before dash calculation")
+    void testDotDash() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "58";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display a positive result when multiplying with a negative numbers")
+    void testMultiplyByNegative() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(10);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+
+        String expected = "-50";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
 
