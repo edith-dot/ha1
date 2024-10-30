@@ -56,6 +56,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //Hier läuft was falsch
     @Test
     @DisplayName("should display error when drawing the square root of a negative number")
     void testSquareRootOfNegative() {
@@ -90,5 +91,21 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+    // Teilaufgabe 1: 1/3 hat unendlich viele Nachkommastellen, Taschenrechner soll aber nur 10 Zeichen zeigen
+    @Test
+    @DisplayName("should only display 10 digits")
+    void testDigitLenght() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "0.33333333";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
