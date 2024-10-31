@@ -108,21 +108,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //Hier Punkt vor Strich Rechnung getestet,
-    //aber anscheinend kann der Taschenrechner auch nur mit 2 Zahlen rechnen
+    
     @Test
-    @DisplayName("should consider dot before dash calculation")
-    void testDotDash() {
+    @DisplayName("should be able to calculate with more than 2 numbers")
+    void testMoreThanTwoNumbers() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(7);
-        calc.pressBinaryOperationKey("x");
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(8);
         calc.pressEqualsKey();
 
-        String expected = "58";
+        String expected = "1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
