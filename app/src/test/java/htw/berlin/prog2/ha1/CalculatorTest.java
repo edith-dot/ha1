@@ -130,7 +130,7 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display a positive result when multiplying with a negative numbers")
+    @DisplayName("should display a negative result when multiplying a positive with a negative numbers")
     void testMultiplyByNegative() {
         Calculator calc = new Calculator();
 
