@@ -108,10 +108,10 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    
+
     @Test
-    @DisplayName("should be able to calculate with more than 2 numbers")
-    void testMoreThanTwoNumbers() {
+    @DisplayName("should be able to calculate with 3 numbers")
+    void testCalculateThreeNumbers() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
