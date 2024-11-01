@@ -108,20 +108,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
+    // Als Ergebnis bekommt man 3.0, anstatt 3 obwohl das .0 entfernt werden soll
+    // Ergebnis bekommt man auch nur, wenn man nicht pressEqualsKey benutzt
+    // -> Ich verändere für Teilaufgabe 3 den Code so, dass das .0 im Ergebnis wegfällt.
     @Test
-    @DisplayName("should be able to calculate with 3 numbers")
-    void testCalculateThreeNumbers() {
+    @DisplayName("calculate square root")
+    void testCalculateSquareRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(7);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(8);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
+        //calc.pressEqualsKey();
 
-        String expected = "1";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
