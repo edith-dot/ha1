@@ -108,8 +108,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // Als Ergebnis bekommt man 3.0, anstatt 3 obwohl das .0 entfernt werden soll
-    // Ergebnis bekommt man auch nur, wenn man nicht pressEqualsKey benutzt
+    // Als Ergebnis bekommt man 3.0, anstatt 3
     // -> Ich verändere für Teilaufgabe 3 den Code so, dass das .0 im Ergebnis wegfällt.
     @Test
     @DisplayName("calculate square root")
@@ -118,7 +117,6 @@ class CalculatorTest {
 
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
-        //calc.pressEqualsKey();
 
         String expected = "3";
         String actual = calc.readScreen();
@@ -126,20 +124,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
+    //Sollte nur einen Wert löschen, nicht alles
     @Test
-    @DisplayName("should display a negative result when multiplying a positive with a negative numbers")
-    void testMultiplyByNegative() {
+    @DisplayName("should only delete the number that came after the operator by pressing ClearKey once")
+    void testClearKey() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(10);
-        calc.pressNegativeKey();
-        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(6);
+        calc.pressClearKey();
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
 
-        String expected = "-50";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
