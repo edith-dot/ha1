@@ -59,13 +59,6 @@ public class Calculator {
                 latestValue = 0.0;
                 break;
         }
-        /*
-        if (clearCount % 2 == 0) {
-            screen = "0";
-        } else {
-            latestOperation = "";
-            latestValue = 0.0;
-        }*/
 
 
     }
