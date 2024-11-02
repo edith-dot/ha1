@@ -12,6 +12,8 @@ public class Calculator {
 
     private double latestValue;
 
+    private int clearCount = 0;
+
     private String latestOperation = "";
 
     /**
@@ -45,11 +47,27 @@ public class Calculator {
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
      */
-    // Macht der nicht so, der löscht schon beim einmaligen drücken alles.
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        clearCount++;
+        switch (clearCount)
+        {
+            case 1:
+                screen = "0";
+                break;
+            case 2:
+                latestOperation = "";
+                latestValue = 0.0;
+                break;
+        }
+        /*
+        if (clearCount % 2 == 0) {
+            screen = "0";
+        } else {
+            latestOperation = "";
+            latestValue = 0.0;
+        }*/
+
+
     }
 
     /**
@@ -72,7 +90,7 @@ public class Calculator {
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
-     * der Bildschirminhalt mit dem Ergebnis aktualisiert.
+     * der Bildschirminhalt mit dem Ergebnis aktualisiert. Wenn das Ergebnis auf .0 endet, wird dies automatisch entfernt.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
@@ -87,6 +105,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.equals("NaN")) screen = "Error";
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
 
     }
 

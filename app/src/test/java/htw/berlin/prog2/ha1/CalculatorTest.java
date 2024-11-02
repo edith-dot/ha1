@@ -108,8 +108,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // Als Ergebnis bekommt man 3.0, anstatt 3
-    // -> Ich verändere für Teilaufgabe 3 den Code so, dass das .0 im Ergebnis wegfällt.
+    //Hat das .0 vor der Verbesserung im Code nicht entfernt
     @Test
     @DisplayName("calculate square root")
     void testCalculateSquareRoot() {
@@ -124,7 +123,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //Sollte nur einen Wert löschen, nicht alles
+    //Hat vor Verbesserung im Code alle Werte gelöscht anstatt nur screen auf 0 zu setzen
     @Test
     @DisplayName("should only delete the number that came after the operator by pressing ClearKey once")
     void testClearKey() {
